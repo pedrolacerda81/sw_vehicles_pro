@@ -1,0 +1,15 @@
+.dart_tool/
+.vscode
+.packages
+build/
+.idea
+pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies
+doc/api/
+*.dart.js
+*.info.json      
+*.js             
+*.js_
+*.js.deps
+*.js.map
