@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Pallete {
   // Main Colors
+  static const Color swYellowDark = Color(0xFFccb400);
   static const Color swYellow = Color(0xFFFFE300);
   static const Color swDarkGrey = Color(0xFF1C1E22);
   static const Color swGrey = Color(0xFF272B30);
