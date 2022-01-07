@@ -83,13 +83,25 @@ class HomeLoadingCard extends StatelessWidget {
                 secondWidth: Get.width * 0.12,
               ),
             ],
-          )
+          ),
+          buildSeparator(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SWShimmer(
+                width: Get.width * 0.3,
+                height: Get.height * 0.01,
+                primaryColor: Pallete.swWhite,
+                highlightColor: Colors.grey[350]!,
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 
-  SizedBox buildSeparator() => SizedBox(height: Get.height * 0.018);
+  SizedBox buildSeparator() => SizedBox(height: Get.height * 0.017);
 
   Row buildShimmerRow({
     required double firstWidth,

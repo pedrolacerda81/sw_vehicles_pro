@@ -19,27 +19,8 @@ class HomeStateHandler extends StatelessWidget {
           backgroundColor: Pallete.swDarkGrey,
           appBar: const SWAppBar(),
           body: state.maybeMap(
-              // orElse: () => const HomeLoading(),
-              orElse: () {
-            final List<Vehicle> vehicles = [1, 2]
-                .map(
-                  (_) => Vehicle(
-                    name: "Sand Crawler",
-                    model: "Digger Crawler",
-                    manufacturer: "Corellia Mining Corporation",
-                    costInCredits: "150000",
-                    length: "36.8 ",
-                    maxAtmospheringSpeed: "30",
-                    crew: "46",
-                    passengers: "30",
-                    cargoCapacity: "50000",
-                    consumables: "2 months",
-                    vehicleClass: "wheeled",
-                  ),
-                )
-                .toList();
-            return HomeListView(vehicles: vehicles);
-          }),
+            orElse: () => const HomeLoading(),
+          ),
         );
       },
     );

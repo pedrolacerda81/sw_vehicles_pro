@@ -48,7 +48,7 @@ class VehicleCard extends StatelessWidget {
               buildScrollableInfoText(info: vehicle.model)
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             children: [
               buildLabelText(label: 'Manufacturer:'),
@@ -56,7 +56,7 @@ class VehicleCard extends StatelessWidget {
               buildScrollableInfoText(info: vehicle.manufacturer)
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             children: [
               buildLabelText(label: 'Class:'),
@@ -64,7 +64,7 @@ class VehicleCard extends StatelessWidget {
               buildScrollableInfoText(info: vehicle.vehicleClass)
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             children: [
               buildLabelText(label: 'Cargo Capacity:'),
@@ -72,7 +72,7 @@ class VehicleCard extends StatelessWidget {
               buildScrollableInfoText(info: '${vehicle.cargoCapacity} Kg')
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             children: [
               buildLabelText(label: 'Consumables:'),
@@ -80,7 +80,7 @@ class VehicleCard extends StatelessWidget {
               buildScrollableInfoText(info: vehicle.consumables)
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -100,7 +100,7 @@ class VehicleCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -120,7 +120,7 @@ class VehicleCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: Get.height * 0.0029),
+          buildSeparator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -140,6 +140,8 @@ class VehicleCard extends StatelessWidget {
       ),
     );
   }
+
+  SizedBox buildSeparator() => SizedBox(height: Get.height * 0.0029);
 
   Text buildLabelText({required String label}) => Text(
         label,
