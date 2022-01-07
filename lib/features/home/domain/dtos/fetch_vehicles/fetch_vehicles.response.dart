@@ -5,11 +5,21 @@ class FetchVehiclesResponseDto extends FetchVehiclesDto {
   @override
   // ignore: overridden_fields
   final List<Vehicle> vehicles;
+  @override
+  // ignore: overridden_fields
+  final int? next;
 
-  FetchVehiclesResponseDto({required this.vehicles});
+  static int? formatNext({dynamic json}) =>
+      json != null ? int.tryParse(json.toString().split('=').last) : null;
+
+  FetchVehiclesResponseDto({
+    required this.vehicles,
+    this.next,
+  });
 
   factory FetchVehiclesResponseDto.fromJson({required dynamic jsonList}) =>
       FetchVehiclesResponseDto(
+        next: formatNext(json: jsonList['next']),
         vehicles: Vehicle.fromJsonList(jsonList: jsonList['results']),
       );
 }

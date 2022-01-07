@@ -8,6 +8,7 @@ class HomeState with _$HomeState {
     required String errorMessage,
   }) = _VehiclesLoadFailure;
   const factory HomeState.vehiclesLoaded({
+    int? next,
     required List<Vehicle> vehicles,
   }) = _VehiclesLoaded;
 }

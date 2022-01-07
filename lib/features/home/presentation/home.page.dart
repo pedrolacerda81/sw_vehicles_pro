@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             cancelToken: cancelToken,
           ),
         ),
-      child: const HomeStateHandler(),
+      child: HomeStateHandler(cancelToken: cancelToken),
     );
   }
 }

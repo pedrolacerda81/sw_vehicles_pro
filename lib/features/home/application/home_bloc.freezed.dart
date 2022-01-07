@@ -270,8 +270,9 @@ class _$HomeStateTearOff {
     );
   }
 
-  _VehiclesLoaded vehiclesLoaded({required List<Vehicle> vehicles}) {
+  _VehiclesLoaded vehiclesLoaded({int? next, required List<Vehicle> vehicles}) {
     return _VehiclesLoaded(
+      next: next,
       vehicles: vehicles,
     );
   }
@@ -287,7 +288,7 @@ mixin _$HomeState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String errorMessage) vehiclesLoadFailure,
-    required TResult Function(List<Vehicle> vehicles) vehiclesLoaded,
+    required TResult Function(int? next, List<Vehicle> vehicles) vehiclesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -295,7 +296,7 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -303,7 +304,7 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -390,7 +391,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String errorMessage) vehiclesLoadFailure,
-    required TResult Function(List<Vehicle> vehicles) vehiclesLoaded,
+    required TResult Function(int? next, List<Vehicle> vehicles) vehiclesLoaded,
   }) {
     return initial();
   }
@@ -401,7 +402,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
   }) {
     return initial?.call();
   }
@@ -412,7 +413,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -504,7 +505,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String errorMessage) vehiclesLoadFailure,
-    required TResult Function(List<Vehicle> vehicles) vehiclesLoaded,
+    required TResult Function(int? next, List<Vehicle> vehicles) vehiclesLoaded,
   }) {
     return loading();
   }
@@ -515,7 +516,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
   }) {
     return loading?.call();
   }
@@ -526,7 +527,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -647,7 +648,7 @@ class _$_VehiclesLoadFailure implements _VehiclesLoadFailure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String errorMessage) vehiclesLoadFailure,
-    required TResult Function(List<Vehicle> vehicles) vehiclesLoaded,
+    required TResult Function(int? next, List<Vehicle> vehicles) vehiclesLoaded,
   }) {
     return vehiclesLoadFailure(errorMessage);
   }
@@ -658,7 +659,7 @@ class _$_VehiclesLoadFailure implements _VehiclesLoadFailure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
   }) {
     return vehiclesLoadFailure?.call(errorMessage);
   }
@@ -669,7 +670,7 @@ class _$_VehiclesLoadFailure implements _VehiclesLoadFailure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
     required TResult orElse(),
   }) {
     if (vehiclesLoadFailure != null) {
@@ -731,7 +732,7 @@ abstract class _$VehiclesLoadedCopyWith<$Res> {
   factory _$VehiclesLoadedCopyWith(
           _VehiclesLoaded value, $Res Function(_VehiclesLoaded) then) =
       __$VehiclesLoadedCopyWithImpl<$Res>;
-  $Res call({List<Vehicle> vehicles});
+  $Res call({int? next, List<Vehicle> vehicles});
 }
 
 /// @nodoc
@@ -746,9 +747,14 @@ class __$VehiclesLoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? next = freezed,
     Object? vehicles = freezed,
   }) {
     return _then(_VehiclesLoaded(
+      next: next == freezed
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as int?,
       vehicles: vehicles == freezed
           ? _value.vehicles
           : vehicles // ignore: cast_nullable_to_non_nullable
@@ -760,14 +766,16 @@ class __$VehiclesLoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_VehiclesLoaded implements _VehiclesLoaded {
-  const _$_VehiclesLoaded({required this.vehicles});
+  const _$_VehiclesLoaded({this.next, required this.vehicles});
 
+  @override
+  final int? next;
   @override
   final List<Vehicle> vehicles;
 
   @override
   String toString() {
-    return 'HomeState.vehiclesLoaded(vehicles: $vehicles)';
+    return 'HomeState.vehiclesLoaded(next: $next, vehicles: $vehicles)';
   }
 
   @override
@@ -775,12 +783,15 @@ class _$_VehiclesLoaded implements _VehiclesLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _VehiclesLoaded &&
+            const DeepCollectionEquality().equals(other.next, next) &&
             const DeepCollectionEquality().equals(other.vehicles, vehicles));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(vehicles));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(next),
+      const DeepCollectionEquality().hash(vehicles));
 
   @JsonKey(ignore: true)
   @override
@@ -793,9 +804,9 @@ class _$_VehiclesLoaded implements _VehiclesLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String errorMessage) vehiclesLoadFailure,
-    required TResult Function(List<Vehicle> vehicles) vehiclesLoaded,
+    required TResult Function(int? next, List<Vehicle> vehicles) vehiclesLoaded,
   }) {
-    return vehiclesLoaded(vehicles);
+    return vehiclesLoaded(next, vehicles);
   }
 
   @override
@@ -804,9 +815,9 @@ class _$_VehiclesLoaded implements _VehiclesLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
   }) {
-    return vehiclesLoaded?.call(vehicles);
+    return vehiclesLoaded?.call(next, vehicles);
   }
 
   @override
@@ -815,11 +826,11 @@ class _$_VehiclesLoaded implements _VehiclesLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String errorMessage)? vehiclesLoadFailure,
-    TResult Function(List<Vehicle> vehicles)? vehiclesLoaded,
+    TResult Function(int? next, List<Vehicle> vehicles)? vehiclesLoaded,
     required TResult orElse(),
   }) {
     if (vehiclesLoaded != null) {
-      return vehiclesLoaded(vehicles);
+      return vehiclesLoaded(next, vehicles);
     }
     return orElse();
   }
@@ -863,9 +874,10 @@ class _$_VehiclesLoaded implements _VehiclesLoaded {
 }
 
 abstract class _VehiclesLoaded implements HomeState {
-  const factory _VehiclesLoaded({required List<Vehicle> vehicles}) =
+  const factory _VehiclesLoaded({int? next, required List<Vehicle> vehicles}) =
       _$_VehiclesLoaded;
 
+  int? get next;
   List<Vehicle> get vehicles;
   @JsonKey(ignore: true)
   _$VehiclesLoadedCopyWith<_VehiclesLoaded> get copyWith =>

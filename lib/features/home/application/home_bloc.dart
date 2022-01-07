@@ -23,10 +23,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             emit(const HomeState.loading());
             final FetchVehiclesDto responseDto =
                 await homeRepository.fetchSWVehicles(
+              page: fetchSWVehiclesEvent.page,
               cancelToken: fetchSWVehiclesEvent.cancelToken,
             );
             if (responseDto.runtimeType == FetchVehiclesResponseDto) {
-              emit(HomeState.vehiclesLoaded(vehicles: responseDto.vehicles!));
+              emit(
+                HomeState.vehiclesLoaded(
+                  next: responseDto.next,
+                  vehicles: responseDto.vehicles!,
+                ),
+              );
             } else {
               emit(
                 HomeState.vehiclesLoadFailure(
