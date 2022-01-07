@@ -34,7 +34,7 @@ class VehicleCard extends StatelessWidget {
             ),
           ),
           Text(
-            'C\$ ${vehicle.costInCredits}',
+            formatCost(cost: vehicle.costInCredits),
             style: GoogleFonts.nunito(
               fontSize: 14.0,
               color: Pallete.swYellow,
@@ -142,6 +142,9 @@ class VehicleCard extends StatelessWidget {
   }
 
   SizedBox buildSeparator() => SizedBox(height: Get.height * 0.0029);
+
+  String formatCost({required String cost}) =>
+      cost == 'unknown' ? 'Unknown Cost' : 'C\$ ${vehicle.costInCredits}';
 
   Text buildLabelText({required String label}) => Text(
         label,

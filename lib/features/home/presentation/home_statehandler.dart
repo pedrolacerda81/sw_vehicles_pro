@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sw_vehicles_pro/core/domain/models/vehicle.dart';
 import 'package:sw_vehicles_pro/core/components/widgets/app_bar.dart';
 import 'package:sw_vehicles_pro/core/components/helpers/pallete.dart';
 import 'package:sw_vehicles_pro/features/home/application/home_bloc.dart';
@@ -20,6 +19,8 @@ class HomeStateHandler extends StatelessWidget {
           appBar: const SWAppBar(),
           body: state.maybeMap(
             orElse: () => const HomeLoading(),
+            vehiclesLoaded: (vehiclesLoadedState) =>
+                HomeListView(vehicles: vehiclesLoadedState.vehicles),
           ),
         );
       },

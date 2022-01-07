@@ -40,4 +40,7 @@ class Vehicle {
       vehicleClass: json['vehicle_class'].toString(),
     );
   }
+
+  static List<Vehicle> fromJsonList({required List<dynamic> jsonList}) =>
+      jsonList.map((json) => Vehicle.fromJson(json: json)).toList();
 }
