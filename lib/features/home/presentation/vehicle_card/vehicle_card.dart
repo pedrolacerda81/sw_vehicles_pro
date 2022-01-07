@@ -22,19 +22,17 @@ class VehicleCard extends StatelessWidget {
           color: Pallete.swGrey,
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
       width: Get.width,
-      height: Get.height * 0.38,
+      height: Get.height > 800 ? Get.height * 0.28 : Get.height * 0.38,
       child: Column(
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Text(
-                vehicle.name,
-                style: const TextStyle(
-                  fontFamily: 'Death Star',
-                  fontSize: 18.0,
-                  color: Pallete.swYellow,
-                ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(
+              vehicle.name,
+              style: const TextStyle(
+                fontFamily: 'Death Star',
+                fontSize: 18.0,
+                color: Pallete.swYellow,
               ),
             ),
           ),
