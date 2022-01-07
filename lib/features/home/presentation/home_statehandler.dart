@@ -31,7 +31,7 @@ class HomeStateHandler extends StatelessWidget {
       builder: (BuildContext context, HomeState state) {
         return Scaffold(
           backgroundColor: Pallete.swDarkGrey,
-          appBar: const SWAppBar(),
+          appBar: const SWAppBar(hasBackButton: false),
           body: state.maybeMap(
             orElse: () => const HomeLoading(),
             vehiclesLoaded: (vehiclesLoadedState) => HomeListView(
