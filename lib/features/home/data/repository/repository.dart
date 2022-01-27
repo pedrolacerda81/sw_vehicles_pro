@@ -13,6 +13,7 @@ class HomeRepository implements AbstractHomeRepository {
 
   final Datasource datasource = Datasource.instance;
 
+  @override
   Future<FetchVehiclesDto> fetchSWVehicles({
     int? page,
     required CancelToken cancelToken,
@@ -37,12 +38,12 @@ class HomeRepository implements AbstractHomeRepository {
         );
       } else {
         return FetchVehiclesErrorDto(
-          errorMessage: 'Desculpe, ocorreu um erro inesperado.',
+          errorMessage: 'Sorry, an unexpected error occurred.',
         );
       }
     } catch (error) {
       return FetchVehiclesErrorDto(
-        errorMessage: 'Desculpe, ocorreu um erro inesperado.',
+        errorMessage: 'Sorry, an unexpected error occurred.',
       );
     }
   }
